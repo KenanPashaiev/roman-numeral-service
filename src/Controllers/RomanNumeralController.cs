@@ -16,13 +16,13 @@ namespace RomanNumeralService.Controllers
         }
 
         [HttpGet]
-        public IActionResult ConvertToRomanNumeral(int query)
+        public IActionResult ConvertToRomanNumeral([FromQuery]RomanNumeralRequest request)
         {
-            var output = romanNumeralConverter.ToRomanNumeral(query);
+            var output = romanNumeralConverter.ToRomanNumeral(request.Query);
 
             var response = new RomanNumeralResponse()
             {
-                Input = query.ToString(),
+                Input = request.Query.ToString(),
                 Output = output
             };
             return this.Ok(response);

@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RomanNumeralService.Utils;
 using RomanNumeralService.Utils.Abstractions;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace RomanNumeralService
 {
@@ -21,13 +23,16 @@ namespace RomanNumeralService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation();
+
+            services.AddTransient<IRomanNumeralConverter, RomanNumeralConverter>();
+            services.AddTransient<IValidator<RomanNumeralRequest>, RomanNumeralRequestValidator>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Roman Number Converter v1", Version = "v1" });
             });
-
-            services.AddTransient<IRomanNumeralConverter, RomanNumeralConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
