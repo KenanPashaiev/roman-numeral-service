@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using RomanNumeralService.Utils;
-using RomanNumeralService.Utils.Abstractions;
 using FluentValidation;
-using FluentValidation.AspNetCore;
+using RomanNumeralService.Converters;
+using RomanNumeralService.Converters.Abstractions;
+using RomanNumeralService.Models;
 
 namespace RomanNumeralService
 {
@@ -23,8 +23,7 @@ namespace RomanNumeralService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                .AddFluentValidation();
+            services.AddControllers();
 
             services.AddTransient<IRomanNumeralConverter, RomanNumeralConverter>();
             services.AddTransient<IValidator<RomanNumeralRequest>, RomanNumeralRequestValidator>();

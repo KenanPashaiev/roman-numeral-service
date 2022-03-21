@@ -1,7 +1,7 @@
 using System.Text;
-using RomanNumeralService.Utils.Abstractions;
+using RomanNumeralService.Converters.Abstractions;
 
-namespace RomanNumeralService.Utils
+namespace RomanNumeralService.Converters
 {
     public class RomanNumeralConverter : IRomanNumeralConverter
     {

@@ -1,4 +1,4 @@
-namespace RomanNumeralService.Utils.Abstractions
+namespace RomanNumeralService.Converters.Abstractions
 {
     public interface IRomanNumeralConverter
     {

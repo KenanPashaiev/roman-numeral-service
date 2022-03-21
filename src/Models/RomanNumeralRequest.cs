@@ -1,4 +1,7 @@
-public class RomanNumeralRequest
+namespace RomanNumeralService.Models
 {
-    public int Query { get; set; }
+    public class RomanNumeralRequest
+    {
+        public int Query { get; set; }
+    }
 }

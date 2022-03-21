@@ -1,4 +1,5 @@
 using FluentValidation;
+using RomanNumeralService.Models;
 
 public class RomanNumeralRequestValidator : AbstractValidator<RomanNumeralRequest>
 {
