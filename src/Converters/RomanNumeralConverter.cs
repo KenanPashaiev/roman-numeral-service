@@ -3,11 +3,13 @@ using RomanNumeralService.Converters.Abstractions;
 
 namespace RomanNumeralService.Converters
 {
+    ///<inheritdoc/>
     public class RomanNumeralConverter : IRomanNumeralConverter
     {
-        public int[] Numbers = {100, 90, 50, 40, 10, 9, 5, 4, 1};
-        public string[] RomanSymbols = {"C","XC","L","XL","X","IX","V","IV","I"};
+        private int[] Numbers = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+        private string[] RomanSymbols = {"C","XC","L","XL","X","IX","V","IV","I"};
 
+        ///<inheritdoc/>
         public string ToRomanNumeral(int number)
         {
             var stringBuilder = new StringBuilder();

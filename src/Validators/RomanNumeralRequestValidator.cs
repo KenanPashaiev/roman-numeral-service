@@ -1,13 +1,25 @@
 using FluentValidation;
 using RomanNumeralService.Models;
 
-public class RomanNumeralRequestValidator : AbstractValidator<RomanNumeralRequest>
+namespace RomanNumeralService.Validators
 {
-    public const int MinInput = 1; 
-    public const int MaxInput = 255; 
-
-    public RomanNumeralRequestValidator()
+    /// <summary>
+    /// <see cref="RomanNumeralRequestValidator"/> Validates objects of <see cref="RomanNumeralRequest"/> class
+    /// </summary>
+    public class RomanNumeralRequestValidator : AbstractValidator<RomanNumeralRequest>
     {
-        RuleFor(r => r.Query).InclusiveBetween(MinInput, MaxInput);
+        private const int MinInput = 1;
+        private const int MaxInput = 255;
+
+        /// <summary>
+        /// Constructor for object of <see cref="RomanNumeralRequestValidator"/> class.
+        /// </summary>
+        /// <remarks>
+        /// Defines validation rules for <see cref="RomanNumeralRequest"/>
+        /// </remarks>
+        public RomanNumeralRequestValidator()
+        {
+            RuleFor(r => r.Query).InclusiveBetween(MinInput, MaxInput);
+        }
     }
 }
