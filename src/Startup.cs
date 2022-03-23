@@ -8,6 +8,7 @@ using FluentValidation;
 using RomanNumeralService.Converters;
 using RomanNumeralService.Converters.Abstractions;
 using RomanNumeralService.Models;
+using RomanNumeralService.Validators;
 
 namespace RomanNumeralService
 {

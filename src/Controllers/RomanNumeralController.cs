@@ -19,12 +19,12 @@ namespace RomanNumeralService.Controllers
         }
 
         [HttpGet]
-        public IActionResult ConvertToRomanNumeral([FromQuery]RomanNumeralRequest request)
+        public IActionResult ConvertToRomanNumeral([FromQuery] RomanNumeralRequest request)
         {
             var validationResult = validator.Validate(request);
-            if(!validationResult.IsValid)
+            if (!validationResult.IsValid)
             {
-                return this.BadRequest(validationResult.Errors);
+                return BadRequest(validationResult.Errors);
             }
 
             var output = romanNumeralConverter.ToRomanNumeral(request.Query);
@@ -34,7 +34,7 @@ namespace RomanNumeralService.Controllers
                 Input = request.Query.ToString(),
                 Output = output
             };
-            return this.Ok(response);
+            return Ok(response);
         }
     }
 }
