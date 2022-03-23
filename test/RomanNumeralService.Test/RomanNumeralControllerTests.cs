@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using FluentAssertions;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using RomanNumeralService.Controllers;
-using RomanNumeralService.Converters;
 using RomanNumeralService.Converters.Abstractions;
 using RomanNumeralService.Models;
 using RomanNumeralService.Validators;
@@ -18,11 +15,11 @@ namespace RomanNumeralServiceTest.Test
 
         public RomanNumeralControllerTests()
         {
-            var mockDataAccess = new Mock<IRomanNumeralConverter>();
-            mockDataAccess.Setup(m => m.ToRomanNumeral(It.IsAny<int>())).Returns(string.Empty);
+            var mockConverter = new Mock<IRomanNumeralConverter>();
+            mockConverter.Setup(m => m.ToRomanNumeral(It.IsAny<int>())).Returns(string.Empty);
 
             this.romanNumeralController = new RomanNumeralController(
-                new RomanNumeralConverter(),
+                mockConverter.Object,
                 new RomanNumeralRequestValidator());
         }
 
