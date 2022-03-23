@@ -1,5 +1,5 @@
 # Roman Numeral Service
-This repository contains a service that converts an integer to Roman numeral. For more detailed specification regarding the Roman numerals, plesae visit this [link](https://mathworld.wolfram.com/RomanNumerals.html). 
+This repository contains a service that converts an integer to Roman numeral. For more detailed specification regarding the Roman numerals, please visit this [link](https://mathworld.wolfram.com/RomanNumerals.html). 
 
 ## Algorithm
 The target integer is converted to Roman numeral using the following algorithm.
