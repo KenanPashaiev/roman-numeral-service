@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using RomanNumeralService.Controllers;
 using RomanNumeralService.Converters;
 using RomanNumeralService.Models;
+using RomanNumeralService.Validators;
 using Xunit;
 
-namespace RomanNumeralServiceTest.ComponentTests
+namespace RomanNumeralService.ComponentTest
 {
     public class RomanNumeralControllerTests
     {
@@ -17,8 +18,7 @@ namespace RomanNumeralServiceTest.ComponentTests
         {
             this.romanNumeralController = new RomanNumeralController(
                 new RomanNumeralConverter(),
-                new RomanNumeralRequestValidator()
-                );
+                new RomanNumeralRequestValidator());
         }
 
         [Theory]
@@ -37,7 +37,7 @@ namespace RomanNumeralServiceTest.ComponentTests
 
         [Theory]
         [MemberData(nameof(BadRequestTheoryData))]
-        public void RomanNumeralController_ConvertToRomanNumeral_ReturnsBadRequest((int query, string message) t)
+        public void RomanNumeralController_ConvertToRomanNumeral_ReturnsBadRequest((int query, string errorMessage) t)
         {
             var request = new RomanNumeralRequest()
             {
@@ -46,7 +46,7 @@ namespace RomanNumeralServiceTest.ComponentTests
 
             var result = (BadRequestObjectResult)romanNumeralController.ConvertToRomanNumeral(request);
             var validationFailures = (List<ValidationFailure>)result.Value;
-            validationFailures[0].ErrorMessage.Should().Be(t.message);
+            validationFailures[0].ErrorMessage.Should().Be(t.errorMessage);
         }
 
         public static TheoryData<(int number, string output)> TheoryData =>

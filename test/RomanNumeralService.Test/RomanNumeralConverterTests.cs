@@ -3,7 +3,7 @@ using RomanNumeralService.Converters;
 using RomanNumeralService.Converters.Abstractions;
 using Xunit;
 
-namespace RomanNumeralServiceTest.ComponentTests
+namespace RomanNumeralServiceTest.Test
 {
     public class RomanNumeralConverterTests
     {
@@ -16,14 +16,14 @@ namespace RomanNumeralServiceTest.ComponentTests
 
         [Theory]
         [MemberData(nameof(TheoryData))]
-        public void RomanNumeralConverter_ToRomanNumeral_ReturnsRomanNumeral((int number, string output) t)
+        public void RomanNumeralConverter_ToRomanNumeral_ReturnsRomanNumeral((int query, string output) t)
         {
-            var result = romanNumeralConverter.ToRomanNumeral(t.number);
+            var result = romanNumeralConverter.ToRomanNumeral(t.query);
             result.Should().Be(t.output);
         }
 
-        public static TheoryData<(int number, string output)> TheoryData =>
-            new TheoryData<(int number, string output)>
+        public static TheoryData<(int query, string output)> TheoryData =>
+            new TheoryData<(int query, string output)>
             {
                 (1, "I"),
                 (2, "II"),
